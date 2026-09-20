@@ -22,10 +22,7 @@ begin
     new.id,
     new.email,
     coalesce(new.raw_user_meta_data->>'display_name', split_part(coalesce(new.email,''),'@',1)),
-    case
-      when new.raw_user_meta_data->>'role' in ('teacher','admin') then (new.raw_user_meta_data->>'role')::public.user_role
-      else 'student'::public.user_role
-    end
+    'student'::public.user_role
   )
   on conflict (id) do nothing;
   return new;
