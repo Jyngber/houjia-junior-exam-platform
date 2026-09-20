@@ -21,8 +21,20 @@ export async function middleware(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser();
   const path = request.nextUrl.pathname;
 
-  if ((path.startsWith("/teacher") || path.startsWith("/student")) && !user) {
-    return NextResponse.redirect(new URL("/auth", request.url));
+  if (path.startsWith("/teacher") || path.startsWith("/student")) {
+    if (!user) return NextResponse.redirect(new URL("/auth", request.url));
+
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", user.id)
+      .single();
+
+    const isTeacherArea = path.startsWith("/teacher");
+    const isTeacher = profile?.role === "teacher" || profile?.role === "admin";
+
+    if (isTeacherArea && !isTeacher) return NextResponse.redirect(new URL("/student", request.url));
+    if (!isTeacherArea && isTeacher) return NextResponse.redirect(new URL("/teacher", request.url));
   }
 
   return response;
