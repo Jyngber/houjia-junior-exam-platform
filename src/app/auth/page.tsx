@@ -7,7 +7,6 @@ type Mode = "signin" | "signup";
 
 export default function AuthPage() {
   const [mode, setMode] = useState<Mode>("signin");
-  const [role, setRole] = useState<"teacher" | "student">("student");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
@@ -24,12 +23,13 @@ export default function AuthPage() {
       if (mode === "signin") {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        window.location.href = role === "teacher" ? "/teacher" : "/student";
+        const { data: profile } = await supabase.from("profiles").select("role").eq("id", data.user?.id ?? "").single();
+        window.location.href = profile?.role === "teacher" || profile?.role === "admin" ? "/teacher" : "/student";
       } else {
         const { data, error } = await supabase.auth.signUp({
           email,
           password,
-          options: { data: { display_name: displayName, role } },
+          options: { data: { display_name: displayName } },
         });
         if (error) throw error;
         setMessage(data.session ? "註冊成功，已登入。" : "註冊成功，請依 Supabase 設定完成 Email 驗證後登入。");
@@ -55,7 +55,6 @@ export default function AuthPage() {
         {mode === "signup" && (
           <>
             <label className="mt-5 block text-sm font-medium">姓名<input value={displayName} onChange={e => setDisplayName(e.target.value)} className="mt-2 w-full rounded-lg border p-3 dark:bg-slate-950" required /></label>
-            <label className="mt-4 block text-sm font-medium">身分<select value={role} onChange={e => setRole(e.target.value as "teacher" | "student")} className="mt-2 w-full rounded-lg border p-3 dark:bg-slate-950"><option value="student">學生</option><option value="teacher">教師</option></select></label>
           </>
         )}
 
