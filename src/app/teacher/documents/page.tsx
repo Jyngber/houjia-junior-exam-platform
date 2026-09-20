@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function DocumentsPage(){return <main className="min-h-screen bg-slate-50 p-6 dark:bg-slate-950"><section className="mx-auto max-w-5xl"><div className="flex items-center justify-between"><div><h1 className="text-3xl font-bold">文件管理</h1><p className="mt-2 text-slate-600 dark:text-slate-300">管理教師上傳的原始教材文件。</p></div><Link href="/teacher/documents/upload" className="rounded-lg bg-[#312E81] px-4 py-2 font-semibold text-white">上傳文件</Link></div></section></main>}
