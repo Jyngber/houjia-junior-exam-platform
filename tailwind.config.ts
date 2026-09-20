@@ -1,0 +1,3 @@
+import type { Config } from "tailwindcss";
+const config:Config={darkMode:["class"],content:["./src/pages/**/*.{ts,tsx}","./src/components/**/*.{ts,tsx}","./src/app/**/*.{ts,tsx}"],theme:{extend:{colors:{primary:"#312E81",success:"#10B981",danger:"#EF4444",background:"#F8FAFC",darkbg:"#0F172A"},fontFamily:{sans:["var(--font-inter)","var(--font-noto-sans-tc)","sans-serif"]}}},plugins:[]};
+export default config;
