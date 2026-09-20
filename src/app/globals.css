@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root{--background:210 40% 98%;--foreground:222 47% 11%}
+.dark{--background:222 47% 11%;--foreground:210 40% 98%}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{min-height:100vh;background:#f8fafc;color:#0f172a}.dark body{background:#0f172a;color:#f8fafc}
+button,input,select,textarea{font:inherit}:focus-visible{outline:3px solid #312e81;outline-offset:2px}
