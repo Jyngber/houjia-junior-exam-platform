@@ -1,0 +1,1 @@
+export default function TeacherPage(){return <main className="min-h-screen p-8"><h1 className="text-3xl font-bold">教師後台</h1><p className="mt-3 text-slate-600">下一階段將接上文件上傳、題庫管理與成績管理。</p></main>}
