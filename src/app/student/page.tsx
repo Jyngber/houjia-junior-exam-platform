@@ -1,0 +1,1 @@
+export default function StudentPage(){return <main className="min-h-screen p-8"><h1 className="text-3xl font-bold">學生入口</h1><p className="mt-3 text-slate-600">下一階段將接上班級、座號、題庫與測驗流程。</p></main>}
