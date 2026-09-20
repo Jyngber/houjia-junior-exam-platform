@@ -1,25 +1,34 @@
-# 後甲國中學習測驗平台
+# 後甲國中線上測驗系統
 
-國中互動式線上測驗平台 MVP。
+Next.js 14 + TypeScript + Tailwind CSS + shadcn/ui + Zustand + Supabase 基礎骨架。
 
-## 目前功能
-- 學生首頁：年級／科目篩選
-- 單題互動測驗與進度
-- 測驗結果與錯題檢視
-- 題庫清單
-- 教師後台與考古題檔案選取介面
-- 示範題新增
-- Responsive 介面
-- WCAG 2.2 AA 導向：語意結構、鍵盤操作、focus、label、非色彩唯一資訊
-
-## 技術
-React + Vite + JavaScript + Lucide React
-
-## 本版限制
-目前資料存在瀏覽器記憶體，檔案上傳尚未真正解析或保存。正式版下一步可加入後端 API、資料庫、教師登入、PDF/Word/Excel 解析、OCR/AI 題目辨識、人工審核與學生作答紀錄。
+## 技術基礎
+- Next.js 14 App Router / React 18
+- TypeScript Strict Mode
+- Tailwind CSS
+- shadcn/ui component convention
+- Zustand
+- Supabase SSR / Browser Client
+- Inter + Noto Sans TC
+- RWD + keyboard/focus accessibility foundation
 
 ## 本機啟動
 ```bash
 npm install
+cp .env.example .env.local
 npm run dev
 ```
+
+## 路由
+- `/`：入口
+- `/student`：學生入口
+- `/teacher`：教師入口
+
+## 下一階段
+1. Supabase PostgreSQL schema + RLS
+2. Auth 與教師／學生角色
+3. Storage 文件上傳
+4. PDF/DOCX/TXT/MD parser
+5. OpenAI 題目結構化
+6. 題庫審核器
+7. 測驗與成績
