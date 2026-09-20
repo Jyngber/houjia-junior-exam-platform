@@ -1,0 +1,2 @@
+export type SupportedDocumentType="pdf"|"docx"|"txt"|"md";
+export type DocumentRecord={id:string;userId:string;fileName:string;fileUrl:string;fileType:SupportedDocumentType;storagePath:string;createdAt:string};
