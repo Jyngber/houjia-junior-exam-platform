@@ -1,0 +1,1 @@
+export type QuestionType="single_choice"|"multiple_choice"|"fill_blank"|"short_answer"; export type QuestionOption={label:string;text:string}; export type Question={id:string;bankId:string;type:QuestionType;content:string;options:QuestionOption[];answer:string|string[];explanation:string};
